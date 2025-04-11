@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Page</title>
+  <style>
+    html {
+      background: #1c1c1f;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    h1, h2 {
+      font-weight: 700;
+      margin-top: 2em;
+      text-align: center;
+    }
+
+    main {
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    button {
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      background: #333;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    button svg {
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    p, .typewriter {
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 20px;
+      background: #0b0b0b;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .typewriter span {
+      display: inline-block;
+      overflow: hidden;
+      border-right: .15em solid orange;
+      white-space: nowrap;
+      animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: orange; }
+    }
+
+    #Review {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .mm {
+      width: 40px;
+      height: 40px;
+      margin-top: 20px;
+    }
+
+    textarea {
+      width: 90%;
+      margin: 20px auto;
+      display: block;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <svg class="mm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M4 11h12v2H4zm0-5h16v2H4zm0 12h7.235v-2H4z"/>
+    </svg>
+    <h1>Good day Mofe🤍</h1>
+    <h2>So what do you wanna do?</h2>
+<button onclick="
+  const randomNumber = Math.random();
+  const message = randomNumber < 0.5 
+    ? 'Okay...Let\'s review questions' 
+    : 'Oga... go rest joor 🌚😅... come and read later';
+  const callback = message === 'Okay...Let\'s review questions' 
+    ? () => showSubjects() 
+    : () => {};
+  typeWriterEffect('Review', message, callback);
+">
+  Review Past Questions
+  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='20'>
+    <path d='M6.012 18H21V4a2 2 0 0 0-2-2H6c-1.206 0-3 .799-3 3v14c0 2.201 1.794 3 3 3h15v-2H6.012C5.55 19.988 5 19.805 5 19s.55-.988 1.012-1zM8 6h9v2H8V6z' />
+  </svg>
+</button>
+    <button onclick="typeWriterEffect('get', 'Mmm..me sef wants to play game 👀...book don try me 😅', () => startGame())">
+      Game
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"><path d="M12 22c3.719 0 7.063-2.035 8.809-5.314L13 12l7.809-4.686C19.063 4.035 15.719 2 12 2 6.486 2 2 6.486 2 12s4.486 10 10 10zm-.5-16a1.5 1.5 0 1 1-.001 3.001A1.5 1.5 0 0 1 11.5 6z"/></svg>
+    </button>
+
+    <button onclick="chatFunction()">
+      Chat
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"><path d="M16 14h.5c.827 0 1.5-.673 1.5-1.5v-9c0-.827-.673-1.5-1.5-1.5h-13C2.673 2 2 2.673 2 3.5V18l5.333-4H16zm-9.333-2L4 14V4h12v8H6.667z"/><path d="M20.5 8H20v6.001c0 1.1-.893 1.993-1.99 1.999H8v.5c0 .827.673 1.5 1.5 1.5h7.167L22 22V9.5c0-.827-.673-1.5-1.5-1.5z"/></svg>
+    </button>
+
+    <button onclick="typeWriterEffect('get', 'Uniosun Gist 😆')">Entertainment</button>
+
+<form action="plans.html" method="get" accept-charset="utf-8">
+      <button>Plans</button>
+    </form>
+    
+    <button onclick="showUniosunInfo()">Uniosun info
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"><path d="M3 4v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1zm8 3h2v2h-2V7zm0 4h2v6h-2v-6z"/></svg>
+    </button>
+    
+     
+    <button onclick="getPDF()">Get PDF
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"><path d="M21 8c-.202 0-4.85.029-9 2.008C7.85 8.029 3.202 8 3 8a1 1 0 0 0-1 1v9.883a1 1 0 0 0 .305.719c.195.188.48.305.729.28l.127-.001c.683 0 4.296.098 8.416 2.025.016.008.034.005.05.011.119.049.244.083.373.083s.254-.034.374-.083c.016-.006.034-.003.05-.011 4.12-1.928 7.733-2.025 8.416-2.025l.127.001c.238.025.533-.092.729-.28.194-.189.304-.449.304-.719V9a1 1 0 0 0-1-1zM4 10.049c1.485.111 4.381.48 7 1.692v7.742c-3-1.175-5.59-1.494-7-1.576v-7.858zm16 7.858c-1.41.082-4 .401-7 1.576v-7.742c2.619-1.212 5.515-1.581 7-1.692v7.858z"/><circle cx="12" cy="5" r="3"/></svg>
+    </button>
+    
+
+    <form action="cal.html"method="get" accept-charset="utf-8">
+    <button>Cal GPA<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24"><path d="M6 22h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm3-3H7v-2h2v2zm0-4H7v-2h2v2zm0-4H7V9h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm4 8h-2v-6h2v6zm0-8h-2V9h2v2zM6 4h12v3H6V4z"/></svg>
+</button>
+
+    </form>
+   
+    <p id="Review"></p>
+    <p class="get"></p>
+    <p class="chat"></p>
+
+    <form>
+      <textarea name="reports" id="report" rows="10" cols="30" placeholder="Send us your report"></textarea>
+    </form>
+
+    <button onclick="clearConvo()">Delete Conv</button>
+  </main>
+
+  <script>
+    alert('My creator Mr. Emmanuel is still updating me, but I am always active!');
+
+
+    function typeWriterEffect(targetClass, message, callback) {
+      const container = document.querySelector(`.${targetClass}`) || document.getElementById(targetClass);
+      container.innerHTML = '';
+      const span = document.createElement('span');
+      container.appendChild(span);
+
+      let index = 0;
+      function type() {
+        if (index < message.length) {
+          span.textContent += message.charAt(index);
+          index++;
+          setTimeout(type, 50);
+        } else if (callback) {
+          callback();
+        }
+      }
+      type();
+    }
+    
+    function calgpa() {
+  document.querySelector('.get').innerHTML = `
+  <form id="gpaForm">
+    <div id="courseInputs">
+      <div class="courseInput">
+      <div>
+        <label style="font-size: 16px" for="course1">Course 1 Name:</label>
+    
+        <input style="height: 10px;" type="text" id="course1" name="course1" required>
+          
+         </div>
+         <div>
+        <label style="font-size: 14px" for="grade1">Grade (A,B,C, etc.):</label>
+        <input style="height: 10px" type="text" id="grade1" name="grade1" required>
+      </div>
+      <div>
+        <label style="font-size: 16px" for="credit1">Credit Hours:</label>
+        <input style="height: 10px" type="number" id="credit1" name="credit1" required>
+        </div>
+      </div>
+
+      <div class="courseInput">
+      <div>
+        <label style="font-size: 16px" for="course2">Course 2 Name:</label>
+        <input style="height: 10px" type="text" id="course2" name="course2" required>
+        </div>
+        <div>
+        <label style="font-size: 14px" for="grade2">Grade (A, B, C, etc.):</label>
+        <input style="height: 10px" type="text" id="grade2" name="grade2" required>
+        </div>
+        <div>
+        <label style="font-size: 16px" for="credit2">Credit Hours:</label>
+        <input style="height: 10px" type="number" id="credit2" name="credit2" required>
+        </div>
+      </div>
+
+      <div class="courseInput">
+      <div>
+        <label style="font-size: 16px" for="course3">Course 3 Name:</label>
+        <input style="height: 10px" type="text" id="course3" name="course3" required>
+        </div>
+        <div>
+        <label style="font-size: 14px" for="grade3">Grade (A, B, C, etc.):</label>
+        <input style="height: 10px" type="text" id="grade3" name="grade3" required>
+        </div>
+        <div>
+        <label style="font-size: 16px" for="credit3">Credit Hours:</label>
+        <input style="height: 10px" type="number" id="credit3" name="credit3" required>
+        </div>
+      </div>
+       <div class="courseInput">
+      <div>
+        <label style="font-size: 16px" for="course3">Course 3 Name:</label>
+        <input style="height: 10px" type="text" id="course4" name="course4" required>
+        </div>
+        <div>
+        <label style="font-size: 14px" for="grade3">Grade (A, B, C, etc.):</label>
+        <input style="height: 10px" type="text" id="grade3" name="grade3" required>
+        </div>
+        <div>
+        <label style="font-size: 16px" for="credit3">Credit Hours:</label>
+        <input style="height: 10px" type="number" id="credit3" name="credit3" required>
+        </div>
+      </div>
+      <label style="font-size: 16px" for="course3">Course 3 Name:</label>
+        <input style="height: 10px" type="text" id="course5" name="course5" required>
+        </div>
+        <div>
+        <label style="font-size: 14px" for="grade3">Grade (A, B, C, etc.):</label>
+        <input style="height: 10px" type="text" id="grade3" name="grade3" required>
+        </div>
+        <div>
+        <label style="font-size: 16px" for="credit3">Credit Hours:</label>
+        <input style="height: 10px" type="number" id="credit3" name="credit3" required>
+        </div>
+      </div>
+      <label style="font-size: 16px" for="course3">Course 3 Name:</label>
+        <input style="height: 10px" type="text" id="course5" name="course5" required>
+        </div>
+        <div>
+        <label style="font-size: 14px" for="grade3">Grade (A, B, C, etc.):</label>
+        <input style="height: 10px" type="text" id="grade3" name="grade3" required>
+        </div>
+        <div>
+        <label style="font-size: 16px" for="credit3">Credit Hours:</label>
+        <input style="height: 10px" type="number" id="credit3" name="credit3" required>
+        </div>
+      </div>
+      <label style="font-size: 16px" for="course3">Course 3 Name:</label>
+        <input style="height: 10px" type="text" id="course7" name="course7" required>
+        </div>
+        <div>
+        <label style="font-size: 14px" for="grade3">Grade (A, B, C, etc.):</label>
+        <input style="height: 10px" type="text" id="grade3" name="grade3" required>
+        </div>
+        <div>
+        <label style="font-size: 16px" for="credit3">Credit Hours:</label>
+        <input style="height: 10px" type="number" id="credit3" name="credit3" required>
+        </div>
+      </div>
+    </div>
+    
+    <button type="button" onclick="calculateGPA()">Calculate GPA</button>
+  </form>
+
+  <h3 id="gpaResult"></h3>
+  `;
+}
+
+    function showSubjects() {
+      setTimeout(() => {
+        document.getElementById("Review").innerHTML += `
+          <button onclick="questions()">CHM 102</button>
+          <button onclick="phyQuestions()">PHY 102</button>
+          <button onclick="mathsQuestions()">MTH 102</button>
+        `;
+      }, 1000);
+    }
+
+
+    function questions() {
+  typeWriterEffect("Review", "1. Which of the following is the main source of hydrocarbon?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="natural_gas">
+          <label for="option1">Natural gas</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="coal">
+          <label for="option2">Coal</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="sunlight">
+          <label for="option3">Sunlight</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="Carbon">
+          <label for="option4">Carbon</label>
+        </div>
+      </div>
+      <button onclick="question2()">Next</button>
+    `;
+  });
+}
+
+function question2() {
+  typeWriterEffect("Review", "2.A substance from petroleum contain carbon atoms ranging from 5 to 10 is?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="kerosene">
+          <label for="option1">Kerosene</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="petrol">
+          <label for="option2">petrol</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="bituem">
+          <label for="option3">bituem</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="lubricating oil">
+          <label for="option4">lubricating oil</label>
+        </div>
+      </div>
+      <button onclick="question3()">Next</button>
+    `;
+  });
+}
+
+
+function question3() {
+  typeWriterEffect("Review", "3. 2-Butene reacts with HBr to give?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="1-Bromobutane">
+          <label for="option1">1-Bromobutane</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="2,2-Dibromobutane">
+          <label for="option2">2,2-Dibromobutane</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="2-Bromobutane">
+          <label for="option3">2-Bromobutane</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="2,2-Dibromobutane">
+          <label for="option4">2,2-Dibromobutane</label>
+        </div>
+      </div>
+      <button onclick="question4()">Next</button>
+    `;
+  });
+}
+
+function calculateGPA() {
+      const grades = {
+        "A": 5.0,
+        "B": 4.0,
+        "C": 3.0,
+        "D": 2.0,
+        "E": 1.0,
+        "F": 0.0
+      };
+
+      let totalCredits = 0;
+      let weightedGrades = 0;
+      let validInput = true;
+
+      for (let i = 1; i <= 3; i++) {
+        const courseName = document.getElementById(`course${i}`).value;
+        const grade = document.getElementById(`grade${i}`).value.toUpperCase();
+        const credit = parseInt(document.getElementById(`credit${i}`).value);
+
+        if (courseName && grades[grade] !== undefined && !isNaN(credit) && credit > 0) {
+          totalCredits += credit;
+          weightedGrades += grades[grade] * credit;
+        } else {
+          validInput = false;
+          alert(`Please check the input for Course ${i}. Ensure valid grade and credit hours.`);
+          break;
+        }
+      }
+
+      if (validInput && totalCredits > 0) {
+        const gpa = weightedGrades / totalCredits;
+        document.getElementById('gpaResult').innerHTML = `Your GPA is: ${gpa.toFixed(2)}`;
+      } else {
+        document.getElementById('gpaResult').innerHTML = 'Please fill in all the fields correctly.';
+      }
+    }
+    
+function question4() {
+  typeWriterEffect("Review", "4.Which of the following is the most stable alkene?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="1-hexene">
+          <label for="option1">1-hexene</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="trans-3-hexene">
+          <label for="option2">trans-3-hexene</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="cis-3-hexene">
+          <label for="option3">cis-3-hexene</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="2,2-Dibromobutane">
+          <label for="option4">(Z)-3-hexene</label>
+        </div>
+      </div>
+      <button onclick="question5()">Next</button>
+    `;
+  });
+}
+
+function question5() {
+  typeWriterEffect("Review", "5.n-propyl iodide reacts with sodium ethoxide to give?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="CH3OCH2CH2CH3">
+          <label for="option1">CH3OCH2CH2CH3</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="CH3CH2OCH3">
+          <label for="option2">CH3CH2OCH3</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="CH3CH2OCH2CH3">
+          <label for="option3">CH3CH2OCH2CH3</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="CH3CH2OCH2CH2CH3">
+          <label for="option4">CH3CH2OCH2CH2CH3</label>
+        </div>
+      </div>
+      <button onclick="question6()">Next</button>
+    `;
+  });
+}
+
+function question6() {
+  typeWriterEffect("Review", "6.Which alkyl halides react most readily by nucleophilic substitute?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="CH3CH2CL">
+          <label for="option1">CH3CH2CL</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="CH3CH2F">
+          <label for="option2">CH3CH2F</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="CH3CH2I">
+          <label for="option3">CH3CH2I</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="CH3CH2Br">
+          <label for="option4">CH3CH2Br</label>
+        </div>
+      </div>
+      <button onclick="question7()">Next</button>
+    `;
+  });
+}
+
+function question7() {
+  typeWriterEffect("Review", "7.Which of the following is the best leaving group?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="F-">
+          <label for="option1">F-</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Br-">
+          <label for="option2">Br-</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="I-">
+          <label for="option3">I-</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="Br-">
+          <label for="option4">Br-</label>
+        </div>
+      </div>
+      <button onclick="question8()">Next</button>
+    `;
+  });
+}
+
+
+
+
+
+
+
+
+    function startGame() {
+      setTimeout(() => {
+        document.querySelector(".get").innerHTML += `
+          <p>So...what game should we play?</p>
+          <button onclick="truthOrDare()">Truth or Dare</button>
+        `;
+      }, 1000);
+    }
+
+    function chatFunction() {
+      alert("Let's chat!");
+      typeWriterEffect("chat","Wanna message Mr Emmanuel? ");
+      
+      setTimeout(() => {
+        document.querySelector('.chat').innerHTML += `\n<a href="tel:+2347014697789">+2347014697789</a>`;
+      }, 1300);
+    }
+    
+    
+    
+    function mathsQuestions() {
+  typeWriterEffect("Review", "1.What is the second derivative for 2x⁴-6x?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="8x³-6">
+          <label for="option1">8x³-6</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="24x²">
+          <label for="option2">24x²</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="48x">
+          <label for="option3">48x</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="24x³">
+          <label for="option4">24x³</label>
+        </div>
+      </div>
+      <button onclick="question2()">Next</button>
+    `;
+  });
+}
+
+
+    function showUniosunInfo() {
+      document.querySelector('.get').innerHTML = `
+        <p>Visit Uniosun Portal: <a href="https://uniosun.edu.ng" target="_blank">uniosun.edu.ng</a></p>
+      `;
+    }
+    
+    
+    
+    function phyQuestions() {
+  typeWriterEffect("Review", "1.What is the ’Electrical pressure' also know as?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="Emf">
+          <label for="option1">Emf</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Potential difference">
+          <label for="option2">Potential difference</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="Current">
+          <label for="option3">Current</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="Coulombs">
+          <label for="option4">Coulombs</label>
+        </div>
+      </div>
+      <button onclick="phyQuestion2()">Next</button>
+    `;
+  });
+}
+
+
+    function getPDF() {
+      typeWriterEffect("get", "Download latest PDF here:");
+    setTimeout(() => {
+        document.querySelector('.get').innerHTML += `\n<a href="#">(Coming Soon)</a>`;
+      }, 1200);}
+
+    function clearConvo() {
+      document.getElementById("Review").innerHTML = '';
+      document.querySelector('.chat').innerHTML = '';
+      document.querySelector('.get').innerHTML = '';
+    }
+  </script>
+</body>
+</html>
