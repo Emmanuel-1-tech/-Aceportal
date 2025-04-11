@@ -10,8 +10,14 @@
       color: white;
       font-family: Arial, sans-serif;
     }
-
-    h1, h2 {
+    h1{
+      font-size: 25px;
+      font-weight: 700;
+      margin-top: 2em;
+      text-align: center;
+    }
+    h2 {
+      font-size: 22px;
       font-weight: 700;
       margin-top: 2em;
       text-align: center;
@@ -114,8 +120,16 @@
     <svg class="mm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M4 11h12v2H4zm0-5h16v2H4zm0 12h7.235v-2H4z"/>
     </svg>
-    <h1>Good day Mofe🤍</h1>
-    <h2>So what do you wanna do?</h2>
+     <h1 id="welcome-message"><h1 id="username-placeholder"></h1><span id="username-placeholder"></span></h1>
+       
+     <!--  <section class="profile">
+  <h2>Your Profile</h2>
+  <p><strong>Username:</strong> <span id="profile-name"></span></p>
+  <p><strong>Phone:</strong> <span id="profile-phone"></span></p>
+  <button onclick="editProfile()">Edit Info</button>
+</section>-->
+
+     <h2>So what do you wanna do?</h2>
 <button onclick="
   const randomNumber = Math.random();
   const message = randomNumber < 0.5 
@@ -172,11 +186,57 @@
     </form>
 
     <button onclick="clearConvo()">Delete Conv</button>
+    <button onclick="logoutUser()">Log Out</button>
   </main>
 
   <script>
-    alert('My creator Mr. Emmanuel is still updating me, but I am always active!');
+function loadProfile() {
+  const name = localStorage.getItem("username") || "N/A";
+  const phone = localStorage.getItem("phone") || "N/A";
+  document.getElementById("profile-name").textContent = name;
+  document.getElementById("profile-phone").textContent = phone;
+}
 
+function editProfile() {
+  const newName = prompt("Enter new username:", localStorage.getItem("username") || "");
+  const newPhone = prompt("Enter new phone number:", localStorage.getItem("phone") || "");
+  if (newName) localStorage.setItem("username", newName);
+  if (newPhone) localStorage.setItem("phone", newPhone);
+  loadProfile();
+  location.reload(); // refresh to update greeting too
+}
+
+window.onload = function() {
+  loadProfile();
+  // Add your greeting logic here too
+};
+  window.onload = function () {
+    const username = localStorage.getItem("username");
+    if (username) {
+      document.getElementById("username-placeholder").textContent = username;
+    } else {
+      document.getElementById("username-placeholder").textContent = "Guest";
+    }
+  };
+
+  window.onload = function () {
+    const username = localStorage.getItem("username") || "Guest";
+    
+    const hour = new Date().getHours();
+    let greeting = "Hello";
+
+    if (hour >= 5 && hour < 12) greeting = "Good morning";
+    else if (hour >= 12 && hour < 17) greeting = "Good afternoon";
+    else if (hour >= 17 && hour < 22) greeting = "Good evening";
+    else greeting = "You’re still up?";
+
+    document.getElementById("username-placeholder").textContent = `${greeting}, ${username} 🤍`;
+  };
+     
+     
+
+    /*alert('My creator Mr. Emmanuel is still updating me, but I am always active!');
+*/
 
     function typeWriterEffect(targetClass, message, callback) {
       const container = document.querySelector(`.${targetClass}`) || document.getElementById(targetClass);
@@ -637,6 +697,10 @@ function question7() {
       document.querySelector('.chat').innerHTML = '';
       document.querySelector('.get').innerHTML = '';
     }
+    function logoutUser() {
+  localStorage.clear();
+  window.location.href = "index.html";
+}
   </script>
 </body>
 </html>
