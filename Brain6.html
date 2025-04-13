@@ -161,7 +161,7 @@
      <h2>So what do you wanna do?</h2>
 <button onclick="
   const randomNumber = Math.random();
-  const message = randomNumber < 0.7
+  const message = randomNumber < 0.8
     ? 'Okay...Let\'s review questions' 
     : 'Oga... go rest joor 🌚😅... come and read later';
   const callback = message === 'Okay...Let\'s review questions' 
@@ -174,7 +174,7 @@
     <path d='M6.012 18H21V4a2 2 0 0 0-2-2H6c-1.206 0-3 .799-3 3v14c0 2.201 1.794 3 3 3h15v-2H6.012C5.55 19.988 5 19.805 5 19s.55-.988 1.012-1zM8 6h9v2H8V6z' />
   </svg>
 </button>
-    <button onclick="typeWriterEffect('get', 'Mmm..me sef wants to play game 👀...book don try me 😅', () => startGame())">
+    <button onclick="typeWriterEffect('get', 'Mmm..me sef wan play game 👀...book don dey tire me 😅', () => startGame())">
       Game
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"><path d="M12 22c3.719 0 7.063-2.035 8.809-5.314L13 12l7.809-4.686C19.063 4.035 15.719 2 12 2 6.486 2 2 6.486 2 12s4.486 10 10 10zm-.5-16a1.5 1.5 0 1 1-.001 3.001A1.5 1.5 0 0 1 11.5 6z"/></svg>
     </button>
@@ -211,7 +211,7 @@
     <p class="chat"></p>
 
 <aside style="color: ghostwhite; font-weight: 700; margin: 1em;
-margin-left: 5px;">
+margin-left: 6px;">
   <details>
     <summary>
       Dm us...
@@ -1017,7 +1017,7 @@ function calculateGPA() {
     }
 
     function clearHistory() {
-      if (confirm("Why you wan clear am now😒...anyways it's not my business ")) {
+      if (confirm("Why you won clear am now😒...anyways it's not my business ")) {
         localStorage.removeItem('truthDareHistory');
         history.truths = [];
         history.dares = [];
