@@ -11,13 +11,13 @@
       font-family: Arial, sans-serif;
     }
     h1{
-      font-size: 25px;
+      font-size: 23px;
       font-weight: 700;
       margin-top: 2em;
       text-align: center;
     }
     h2 {
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 700;
       margin-top: 2em;
       text-align: center;
@@ -39,7 +39,7 @@
     }
 
     button {
-      font-size: 20px;
+      font-size: 15px;
       font-weight: 700;
       color: white;
       background: #333;
@@ -65,8 +65,7 @@
     }
 
     p, .typewriter {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 16px;
       text-align: center;
       margin-top: 20px;
       background: #0b0b0b;
@@ -113,15 +112,38 @@
       padding: 10px;
       border-radius: 5px;
     }
+    
+
   </style>
 </head>
 <body>
   <main>
-    <svg class="mm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M4 11h12v2H4zm0-5h16v2H4zm0 12h7.235v-2H4z"/>
-    </svg>
-     <h1 id="welcome-message"><h1 id="username-placeholder"></h1><span id="username-placeholder"></span></h1>
-       
+   
+  
+   <!-- <div class="toolbar">
+  <label for="bg-color-picker">Background:</label>
+  <input type="color" id="bg-color-picker">
+
+  <label for="font-size-selector">Font:</label>
+  <select id="font-size-selector">
+    <option value="small">Small</option>
+    <option value="medium" selected>Medium</option>
+    <option value="large">Large</option>
+  </select>
+
+  <button id="theme-toggle">Dark Mode</button>
+  <button id="reset-color">Reset</button>
+</div>-->
+<!--
+<div class="function-bar">
+  <button class="hamburger" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <span class="title">Change Settings</span>
+</div>-->
+   
      <!--  <section class="profile">
   <h2>Your Profile</h2>
   <p><strong>Username:</strong> <span id="profile-name"></span></p>
@@ -129,10 +151,15 @@
   <button onclick="editProfile()">Edit Info</button>
 </section>-->
 
+ <svg class="mm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M4 11h12v2H4zm0-5h16v2H4zm0 12h7.235v-2H4z"/>
+    </svg>
+     <h1 id="welcome-message"><h1 id="username-placeholder"></h1><span id="username-placeholder"></span></h1>
+       
      <h2>So what do you wanna do?</h2>
 <button onclick="
   const randomNumber = Math.random();
-  const message = randomNumber < 0.5 
+  const message = randomNumber < 0.7
     ? 'Okay...Let\'s review questions' 
     : 'Oga... go rest joor 🌚😅... come and read later';
   const callback = message === 'Okay...Let\'s review questions' 
@@ -181,15 +208,35 @@
     <p class="get"></p>
     <p class="chat"></p>
 
+<aside style="color:black; font-weight: 700; margin: 1em;
+margin-left: 0px;">
+  <details>
+    <summary>
+      write to us...
+    </summary>
     <form>
-      <textarea name="reports" id="report" rows="10" cols="30" placeholder="Send us your report"></textarea>
+      <textarea name="reports" id="report" rows="10" cols="30" placeholder="Send us your feedback...."></textarea>
+      <button type="submit">Send</button>
     </form>
+  </details>
+</aside>
 
-    <button onclick="clearConvo()">Delete Conv</button>
+    <button onclick="clearConvo()">Clear Conv</button>
     <button onclick="logoutUser()">Log Out</button>
+  <!--  <label for="bg-color-picker">Choose background colour:</label>
+<input type="color" id="bg-color-picker">-->
+<!--<div style="padding: 1rem;">
+  <label for="bg-color-picker" style="display: block; margin-bottom: 0.5rem;">
+    Choose background colour:
+  </label>
+  <input type="color" id="bg-color-picker" style="width: 100%; max-width: 200px;">
+  <button id="reset-color" style="margin-top: 1rem;">Reset to Default</button>
+</div>-->
   </main>
 
   <script>
+  
+ 
 function loadProfile() {
   const name = localStorage.getItem("username") || "N/A";
   const phone = localStorage.getItem("phone") || "N/A";
@@ -375,8 +422,14 @@ window.onload = function() {
         `;
       }, 1000);
     }
+    
+    
+    
+    
+    
 
-
+const randomNumber = Math.random();
+      if (randomNumber >= 0 && randomNumber < 1/2) {
     function questions() {
   typeWriterEffect("Review", "1. Which of the following is the main source of hydrocarbon?", () => {
     document.getElementById("Review").innerHTML += `
@@ -455,44 +508,6 @@ function question3() {
     `;
   });
 }
-
-function calculateGPA() {
-      const grades = {
-        "A": 5.0,
-        "B": 4.0,
-        "C": 3.0,
-        "D": 2.0,
-        "E": 1.0,
-        "F": 0.0
-      };
-
-      let totalCredits = 0;
-      let weightedGrades = 0;
-      let validInput = true;
-
-      for (let i = 1; i <= 3; i++) {
-        const courseName = document.getElementById(`course${i}`).value;
-        const grade = document.getElementById(`grade${i}`).value.toUpperCase();
-        const credit = parseInt(document.getElementById(`credit${i}`).value);
-
-        if (courseName && grades[grade] !== undefined && !isNaN(credit) && credit > 0) {
-          totalCredits += credit;
-          weightedGrades += grades[grade] * credit;
-        } else {
-          validInput = false;
-          alert(`Please check the input for Course ${i}. Ensure valid grade and credit hours.`);
-          break;
-        }
-      }
-
-      if (validInput && totalCredits > 0) {
-        const gpa = weightedGrades / totalCredits;
-        document.getElementById('gpaResult').innerHTML = `Your GPA is: ${gpa.toFixed(2)}`;
-      } else {
-        document.getElementById('gpaResult').innerHTML = 'Please fill in all the fields correctly.';
-      }
-    }
-    
 function question4() {
   typeWriterEffect("Review", "4.Which of the following is the most stable alkene?", () => {
     document.getElementById("Review").innerHTML += `
@@ -596,6 +611,230 @@ function question7() {
     `;
   });
 }
+
+} else {
+  
+  function questions() {
+  typeWriterEffect("Review", "1. How is the IUPAC name arranged?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="root+suffix+infix+prefix">
+          <label for="option1">root+suffix+infix+prefix</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="suffix+infix+root+prefix">
+          <label for="option2">suffix+infix+root+prefix</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="prefix+infix+root+suffix">
+          <label for="option3">prefix+infix+root+suffix</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="infix+suffix+prefix+root">
+          <label for="option4">infix+suffix+prefix+root</label>
+        </div>
+      </div>
+      <button onclick="question2()">Next</button>
+    `;
+  });
+}
+
+function question2() {
+  typeWriterEffect("Review", "2.What is ester made of?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="Alkane and amide">
+          <label for="option1">Alkane and amide</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Alkyne and ketone">
+          <label for="option2">Alkyne and ketone</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="bituem">
+          <label for="option3">Alkanol and Carboxylic acid</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="None">
+          <label for="option4">None</label>
+        </div>
+      </div>
+      <button onclick="question3()">Next</button>
+    `;
+  });
+}
+
+
+function question3() {
+  typeWriterEffect("Review", "3.What is the formula for amides?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="RCONH2">
+          <label for="option1">RCONH2</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="RNH2">
+          <label for="option2">RNH2</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="RCOONH3">
+          <label for="option3">RCOONH3</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="RNH3">
+          <label for="option4">RNH3</label>
+        </div>
+      </div>
+      <button onclick="question4()">Next</button>
+    `;
+  });
+}
+
+function question4() {
+  typeWriterEffect("Review", "4.Which of the following is NOT a characteristics of hydrocarbons?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="Inflammable">
+          <label for="option1">Inflammable</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="High reactivity">
+          <label for="option2">High reactivity</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="Low melting and boiling point">
+          <label for="option3">Low melting and boiling point</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="None of the above">
+          <label for="option4">None of the above</label>
+        </div>
+      </div>
+      <button onclick="question5()">Next</button>
+    `;
+  });
+}
+
+function question5() {
+  typeWriterEffect("Review", "5.n-propyl iodide reacts with sodium ethoxide to give?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="CH3OCH2CH2CH3">
+          <label for="option1">CH3OCH2CH2CH3</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="CH3CH2OCH3">
+          <label for="option2">CH3CH2OCH3</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="CH3CH2OCH2CH3">
+          <label for="option3">CH3CH2OCH2CH3</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="CH3CH2OCH2CH2CH3">
+          <label for="option4">CH3CH2OCH2CH2CH3</label>
+        </div>
+      </div>
+      <button onclick="question6()">Next</button>
+    `;
+  });
+}
+
+function question6() {
+  typeWriterEffect("Review", "6.Which alkyl halides react most readily by nucleophilic substitute?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="CH3CH2CL">
+          <label for="option1">CH3CH2CL</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="CH3CH2F">
+          <label for="option2">CH3CH2F</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="CH3CH2I">
+          <label for="option3">CH3CH2I</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="CH3CH2Br">
+          <label for="option4">CH3CH2Br</label>
+        </div>
+      </div>
+      <button onclick="question7()">Next</button>
+    `;
+  });
+}
+
+function question7() {
+  typeWriterEffect("Review", "7.Which of the following is the best leaving group?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="F-">
+          <label for="option1">F-</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Br-">
+          <label for="option2">Br-</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="I-">
+          <label for="option3">I-</label>
+        </div>
+          <div>
+          <input type="radio" id="option4" name="option" value="Br-">
+          <label for="option4">Br-</label>
+        </div>
+      </div>
+      <button onclick="question8()">Next</button>
+    `;
+  });
+}
+}
+
+function calculateGPA() {
+      const grades = {
+        "A": 5.0,
+        "B": 4.0,
+        "C": 3.0,
+        "D": 2.0,
+        "E": 1.0,
+        "F": 0.0
+      };
+
+      let totalCredits = 0;
+      let weightedGrades = 0;
+      let validInput = true;
+
+      for (let i = 1; i <= 3; i++) {
+        const courseName = document.getElementById(`course${i}`).value;
+        const grade = document.getElementById(`grade${i}`).value.toUpperCase();
+        const credit = parseInt(document.getElementById(`credit${i}`).value);
+
+        if (courseName && grades[grade] !== undefined && !isNaN(credit) && credit > 0) {
+          totalCredits += credit;
+          weightedGrades += grades[grade] * credit;
+        } else {
+          validInput = false;
+          alert(`Please check the input for Course ${i}. Ensure valid grade and credit hours.`);
+          break;
+        }
+      }
+
+      if (validInput && totalCredits > 0) {
+        const gpa = weightedGrades / totalCredits;
+        document.getElementById('gpaResult').innerHTML = `Your GPA is: ${gpa.toFixed(2)}`;
+      } else {
+        document.getElementById('gpaResult').innerHTML = 'Please fill in all the fields correctly.';
+      }
+    }
+    
 
 
 
