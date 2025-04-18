@@ -15,7 +15,7 @@
     h1{
       font-size: 23px;
       font-weight: 700;
-      margin-top: 2em;
+      margin-top: 5em;
       text-align: center;
     }
     h2 {
@@ -116,9 +116,174 @@
     }
     
 
+ .
+    
+   
+ 
+   
+   
+     .toolbar {
+       animation: fadeInUp 1s ease-out;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      padding: 0.75rem 1rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #1e2746;
+      z-index: 1000;
+    }
+
+    .toolbar-title {
+      font-size: 1.3rem;
+      margin: 0;
+    }
+
+    .menu-button {
+      
+      background: none;
+      border: 1px solid white;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.90rem;
+      margin-left: 230px;
+      margin-top: 24px;
+      animation: fadeInUp 1s ease-out;
+      position: fixed;
+      left: 1rem;
+      z-index: 1100;
+    }
+
+    .hamburger {
+      animation: fadeInUp 1s ease-out;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .hamburger span {
+      
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .sidebar {
+      animation: fadeInUp 1s ease-out;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1100;
+      position: fixed;
+      top: 0;
+      left: -300px;
+      height: 100%;
+      width: 150px;
+      background-color: #333;
+      color: white;
+      padding: 2rem 1rem;
+      transition: left 0.3s ease;
+      z-index: 999;
+      padding-top: 4em;
+    }
+
+    .sidebar.active {
+      
+      left: 0;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 1rem 0;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .content {
+      padding: 5rem 1rem 1rem;
+      color: white;
+    }
+
+    .toolbar-left {
+      
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    
+     .profile-pic-container {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #333;
+      margin-bottom: 10px;
+    }
+    .profile-pic-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #upload-btn {
+      display: block;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
+    <div class="toolbar">
+    <div class="toolbar-left">
+      <p id="hamburger" class="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </p>
+     
+    </div>
+    <p id="menu-button" class="menu-button">Main Menu</p>
+  </div>
+  
+  
+
+  <!-- Sidebar -->
+  <nav id="sidebar" class="sidebar">
+    <ul>
+      <li><a href="#" id="home-link">Home</a></li>
+      <li><a href="#" id="settings-link">Settings</a></li>
+      <li><a href="#" id="profile-link">Profile</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- Page Content -->
+  <div class="content" id="display-area">
   <main>
    
   
@@ -153,15 +318,19 @@
   <button onclick="editProfile()">Edit Info</button>
 </section>-->
 
- <svg class="mm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<!-- <svg class="mm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+   
       <path d="M4 11h12v2H4zm0-5h16v2H4zm0 12h7.235v-2H4z"/>
-    </svg>
+    </svg>-->
+    <section class="home">
+      
+    
      <h1 id="welcome-message"><h1 id="username-placeholder"></h1><span id="username-placeholder"></span></h1>
        
      <h2>So what do you wanna do?</h2>
 <button onclick="
   const randomNumber = Math.random();
-  const message = randomNumber < 0.8
+  const message = randomNumber < 0.95
     ? 'Okay...Let\'s review questions' 
     : 'Oga... go rest joor 🌚😅... come and read later';
   const callback = message === 'Okay...Let\'s review questions' 
@@ -174,10 +343,6 @@
     <path d='M6.012 18H21V4a2 2 0 0 0-2-2H6c-1.206 0-3 .799-3 3v14c0 2.201 1.794 3 3 3h15v-2H6.012C5.55 19.988 5 19.805 5 19s.55-.988 1.012-1zM8 6h9v2H8V6z' />
   </svg>
 </button>
-    <button onclick="typeWriterEffect('get', 'Mmm..me sef wan play game 👀...book don dey tire me 😅', () => startGame())">
-      Game
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"><path d="M12 22c3.719 0 7.063-2.035 8.809-5.314L13 12l7.809-4.686C19.063 4.035 15.719 2 12 2 6.486 2 2 6.486 2 12s4.486 10 10 10zm-.5-16a1.5 1.5 0 1 1-.001 3.001A1.5 1.5 0 0 1 11.5 6z"/></svg>
-    </button>
 
     <button onclick="chatFunction()">
       Chat
@@ -211,11 +376,52 @@
     <p class="get"></p>
     <p class="chat"></p>
 
-<aside style="color: ghostwhite; font-weight: 700; margin: 1em;
-margin-left: 6px;">
+    <button onclick="clearConvo()">Clear Conv</button>
+    <button onclick="logoutUser()">Log Out</button>
+  <!--  <label for="bg-color-picker">Choose background colour:</label>
+<input type="color" id="bg-color-picker">-->
+<!--<div style="padding: 1rem;">
+  <label for="bg-color-picker" style="display: block; margin-bottom: 0.5rem;">
+    Choose background colour:
+  </label>
+  <input type="color" id="bg-color-picker" style="width: 100%; max-width: 200px;">
+  <button id="reset-color" style="margin-top: 1rem;">Reset to Default</button>
+</div>-->
+</section>
+  </main>
+  </div>
+
+  <script>
+const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const homeLink = document.getElementById('home-link');
+    const settingsLink = document.getElementById('settings-link');
+    const profileLink = document.getElementById('profile-link');
+    const displayArea = document.getElementById('display-area');
+    const menuButton = document.getElementById('menu-button');
+
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    homeLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      displayArea.innerHTML = `<h2>Home</h2><p>Welcome back to the home screen! Here you’ll find an overview of everything important.</p>`;
+      sidebar.classList.remove('active');
+    });
+
+    settingsLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      displayArea.innerHTML = `<h2 style="color: white;
+      margin-right: 13.0em;margin-bottom: 3em;">About</h2>
+      
+     
+      
+      <aside style="color: ghostwhite; font-weight: 700; margin: 0em;
+margin-left: 0.9em;">
   <details>
-    <summary>
-      Dm us...
+    <summary style="color:#808080">
+      Write to us...
     </summary>
     <form>
       <textarea name="reports" id="report" rows="10" cols="30" placeholder="Send us your feedback...."></textarea>
@@ -223,6 +429,147 @@ margin-left: 6px;">
     </form>
   </details>
 </aside>
+
+<p style="background:#1c1c1f; margin-top: 1em; margin-bottom: 0px;"><a style="background:#1c1c1f;color: #808080;margin-right: 7.721em;
+      margin-left: 0px; padding: 0px" href="">Join Whatsapp Channel</a></p>
+      
+       <p style="background:#1c1c1f; margin-right: 11em;margin-top: 1em
+      "><a style="background:#1c1c1f;color: #FF7777;
+      margin-left: 0px;padding: 0px"href="">Report an issue</a></p>`;
+      sidebar.classList.remove('active');
+    });
+
+    profileLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      displayArea.innerHTML = `<h2>Choose Your Profile Picture</h2>
+  <div class="profile-pic-container">
+    <img id="profile-preview" src="default.jpg" alt="Profile Picture">
+  </div>
+
+  <input type="file" id="file-input" accept="image/*">
+  <button id="upload-btn">Save Picture</button>
+  <button id="remove-btn">Remove Picture</button>
+
+`;const fileInput = document.getElementById('file-input');
+    const preview = document.getElementById('profile-preview');
+    const defaultPic = 'default.jpg';
+
+    fileInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          preview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById('upload-btn').addEventListener('click', () => {
+      localStorage.setItem('profilePic', preview.src);
+      alert('Profile picture saved!');
+    });
+
+    document.getElementById('remove-btn').addEventListener('click', () => {
+      preview.src = defaultPic;
+      localStorage.removeItem('profilePic');
+      alert('Profile picture removed!');
+    });
+
+    // Load saved picture if available
+    const savedPic = localStorage.getItem('profilePic');
+    if (savedPic) {
+      preview.src = savedPic;
+    }});
+
+    menuButton.addEventListener('click', () => {
+      displayArea.innerHTML = `
+      <main>
+   
+  
+   <!-- <div class="toolbar">
+  <label for="bg-color-picker">Background:</label>
+  <input type="color" id="bg-color-picker">
+
+  <label for="font-size-selector">Font:</label>
+  <select id="font-size-selector">
+    <option value="small">Small</option>
+    <option value="medium" selected>Medium</option>
+    <option value="large">Large</option>
+  </select>
+
+  <button id="theme-toggle">Dark Mode</button>
+  <button id="reset-color">Reset</button>
+</div>-->
+<!--
+<div class="function-bar">
+  <button class="hamburger" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <span class="title">Change Settings</span>
+</div>-->
+   
+     <!--  <section class="profile">
+  <h2>Your Profile</h2>
+  <p><strong>Username:</strong> <span id="profile-name"></span></p>
+  <p><strong>Phone:</strong> <span id="profile-phone"></span></p>
+  <button onclick="editProfile()">Edit Info</button>
+</section>-->
+
+<!-- <svg class="mm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+   
+      <path d="M4 11h12v2H4zm0-5h16v2H4zm0 12h7.235v-2H4z"/>
+    </svg>-->
+    <section class="home">
+      
+    
+     <h1 id="welcome-message"><h1 id="username-placeholder"></h1><span id="username-placeholder"></span></h1>
+       
+     <h2>So what do you wanna do?</h2>
+<button onclick="
+  past();
+">
+  Review Past Questions
+  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='20'>
+    <path d='M6.012 18H21V4a2 2 0 0 0-2-2H6c-1.206 0-3 .799-3 3v14c0 2.201 1.794 3 3 3h15v-2H6.012C5.55 19.988 5 19.805 5 19s.55-.988 1.012-1zM8 6h9v2H8V6z' />
+  </svg>
+</button>
+   
+
+    <button onclick="chatFunction()">
+      Chat
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"><path d="M16 14h.5c.827 0 1.5-.673 1.5-1.5v-9c0-.827-.673-1.5-1.5-1.5h-13C2.673 2 2 2.673 2 3.5V18l5.333-4H16zm-9.333-2L4 14V4h12v8H6.667z"/><path d="M20.5 8H20v6.001c0 1.1-.893 1.993-1.99 1.999H8v.5c0 .827.673 1.5 1.5 1.5h7.167L22 22V9.5c0-.827-.673-1.5-1.5-1.5z"/></svg>
+    </button>
+
+    <button onclick="typeWriterEffect('get', 'Uniosun Gist 😆')">Entertainment</button>
+
+<form action="plans.html" method="get" accept-charset="utf-8">
+      <button>Plans</button>
+    </form>
+    
+    <button onclick="showUniosunInfo()">Uniosun info
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"><path d="M3 4v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1zm8 3h2v2h-2V7zm0 4h2v6h-2v-6z"/></svg>
+    </button>
+    
+     
+    <button onclick="getPDF()">Get PDF
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"><path d="M21 8c-.202 0-4.85.029-9 2.008C7.85 8.029 3.202 8 3 8a1 1 0 0 0-1 1v9.883a1 1 0 0 0 .305.719c.195.188.48.305.729.28l.127-.001c.683 0 4.296.098 8.416 2.025.016.008.034.005.05.011.119.049.244.083.373.083s.254-.034.374-.083c.016-.006.034-.003.05-.011 4.12-1.928 7.733-2.025 8.416-2.025l.127.001c.238.025.533-.092.729-.28.194-.189.304-.449.304-.719V9a1 1 0 0 0-1-1zM4 10.049c1.485.111 4.381.48 7 1.692v7.742c-3-1.175-5.59-1.494-7-1.576v-7.858zm16 7.858c-1.41.082-4 .401-7 1.576v-7.742c2.619-1.212 5.515-1.581 7-1.692v7.858z"/><circle cx="12" cy="5" r="3"/></svg>
+    </button>
+    
+      <button onclick="mofe()">About us<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+</button>
+    <form action="cal.html"method="get" accept-charset="utf-8">
+    <button>Cal GPA<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24"><path d="M6 22h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm3-3H7v-2h2v2zm0-4H7v-2h2v2zm0-4H7V9h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm4 8h-2v-6h2v6zm0-8h-2V9h2v2zM6 4h12v3H6V4z"/></svg>
+</button>
+
+    </form>
+   
+    <p id="Review"></p>
+    <p class="get"></p>
+    <p class="chat"></p>
+
 
     <button onclick="clearConvo()">Clear Conv</button>
     <button onclick="logoutUser()">Log Out</button>
@@ -235,12 +582,22 @@ margin-left: 6px;">
   <input type="color" id="bg-color-picker" style="width: 100%; max-width: 200px;">
   <button id="reset-color" style="margin-top: 1rem;">Reset to Default</button>
 </div>-->
+</section>
   </main>
-
-  <script>
+  </div>
+`;
+      sidebar.classList.remove('active');
+    });
+  
+  
+  
+  
+  
+  
+  
   
  function mofe(){
-   document.querySelector('.get').innerHTML=`~∆~`;
+   document.querySelector('.get').innerHTML=`🤍 MOFE 🤍 `;
  }
 function loadProfile() {
   const name = localStorage.getItem("username") || "N/A";
@@ -285,7 +642,16 @@ window.onload = function() {
     document.getElementById("username-placeholder").textContent = `${greeting}, ${username} 🤍`;
   };
      
-     
+     function past() {
+const randomNumber = Math.random();
+  const message = randomNumber < 0.95
+    ? 'Okay...Let\'s review questions' 
+    : 'Oga... go rest joor 🌚😅... come and read later';
+  const callback = message === 'Okay...Let\'s review questions' 
+    ? () => showSubjects() 
+    : () => {};
+  typeWriterEffect('Review', message, callback);
+     }
 
     /*alert('My creator Mr. Emmanuel is still updating me, but I am always active!');
 */
@@ -844,17 +1210,7 @@ function calculateGPA() {
     
 
 
-    function startGame() {
-      setTimeout(() => {
-        document.querySelector(".get").innerHTML += `
-          <p>So...what game should we play?</p>
-          <button onclick="truthOrDare()">Truth or Dare</button>
-           <button onclick="viewHistory()">My History</button>
-    <button onclick="clearHistory()">Clear History</button>
-  
-        `;
-      }, 1000);
-    }
+    
 
     function chatFunction() {
       alert("Let's chat!");
@@ -929,105 +1285,6 @@ function calculateGPA() {
 }
 
 
-  
-  
-  const truths = [
-      "What’s your biggest fear in school?",
-      "Have you ever cheated in an exam?",
-      "Who’s your crush on campus?"
-    ];
-
-    const dares = [
-      "Text your crush ‘I miss you’",
-      "Sing your favourite song out loud",
-      "Take a funny selfie and send it to your bestie"
-    ];
-
-    const history = JSON.parse(localStorage.getItem('truthDareHistory')) || {
-      truths: [],
-      dares: []
-    };
-
-    function saveHistory() {
-      localStorage.setItem('truthDareHistory', JSON.stringify(history));
-    }
-
-    function truthOrDare() {
-      document.querySelector('.get').innerHTML = `
-        <p>Let's play Truth or Dare!</p>
-        <button onclick="showTruth()">Truth</button>
-        <button onclick="showDare()">Dare</button>
-      `;
-    }
-
-    function showTruth() {
-      const truth = truths[Math.floor(Math.random() * truths.length)];
-      const container = document.querySelector('.get');
-      container.innerHTML = `
-        <p>Truth: ${truth}</p>
-        <input type="text" id="truthAnswer" placeholder="Type your answer here..." />
-        <button onclick="saveTruthAnswer('${truth}')">Submit</button>
-        <button onclick="truthOrDare()">Back</button>
-      `;
-    }
-
-    function saveTruthAnswer(question) {
-      const answer = document.getElementById('truthAnswer').value.trim();
-      if (answer) {
-        history.truths.push({ question, answer });
-        saveHistory();
-        alert("Shey...you dey sure sha🤨!");
-        truthOrDare();
-      }
-    }
-
-    function showDare() {
-      const dare = dares[Math.floor(Math.random() * dares.length)];
-      history.dares.push(dare);
-      saveHistory();
-      document.querySelector('.get').innerHTML = `
-        <p>Dare: ${dare}</p>
-        <button onclick="truthOrDare()">Back</button>
-      `;
-    }
-
-    function viewHistory() {
-      let output = "<h2>My Truth & Dare History</h2>";
-
-      if (history.truths.length === 0 && history.dares.length === 0) {
-        output += "<p>No history yet.</p>";
-      } else {
-        if (history.truths.length > 0) {
-          output += "<h3>Truths</h3>";
-          history.truths.forEach((item, i) => {
-            output += `<p>${i + 1}. <strong>${item.question}</strong><br/>Answer: ${item.answer}</p>`;
-          });
-        }
-        if (history.dares.length > 0) {
-          output += "<h3>Dares</h3>";
-          history.dares.forEach((d, i) => {
-            output += `<p>${i + 1}. ${d}</p>`;
-          });
-        }
-      }
-
-      output += `<button onclick="truthOrDare()">Back</button>`;
-      document.querySelector('.get').innerHTML = output;
-    }
-
-    function clearHistory() {
-      if (confirm("Why you won clear am now😒...anyways it's not my business ")) {
-        localStorage.removeItem('truthDareHistory');
-        history.truths = [];
-        history.dares = [];
-        alert("History cleared!");
-        document.querySelector('.get').innerHTML = "";
-      }
-    }
-  
-  
-  
-  
 
     function getPDF() {
       typeWriterEffect("get", "Download latest PDF here:");
@@ -1044,6 +1301,7 @@ function calculateGPA() {
   localStorage.clear();
   window.location.href = "index.html";
 }
+
   </script>
 </body>
 </html>
