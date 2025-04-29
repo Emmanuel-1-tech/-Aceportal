@@ -140,7 +140,32 @@
   </div>
   <script>
     
-    
+    document.getElementById("signin-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById("Name").value.trim();
+    const number = document.getElementById("Number").value.trim();
+    const password = document.getElementById("Password").value;
+
+    if (username.length < 3) {
+      alert("Username must be at least 3 characters.");
+      return;
+    }
+    if (number.length < 10) {
+      alert("Phone number must be at least 10 digits.");
+      return;
+    }
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters.");
+      return;
+    }
+
+    // Save to localStorage
+    localStorage.setItem("username", username);
+    localStorage.setItem("phone", number);
+
+    window.location.href = "Home4.html";
+  });
     
   </script>
 </body>
