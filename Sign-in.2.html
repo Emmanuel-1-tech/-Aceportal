@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Register</title>
   <style>
     :root {
@@ -109,7 +109,7 @@
   <h1>Register</h1>
   
   <div class="card">
-    <form>
+    <form id="register-form">
       <div>
         <label for="Name">Username</label>
         <input type="text" id="Name" name="Name" placeholder="Enter your username" required>
@@ -124,49 +124,55 @@
         <label for="Number">Phone Number</label>
         <input type="number" id="Number" name="Number" placeholder="Enter your number" required>
       </div>
-    
+      
       <div>
         <label for="Password">Password</label>
         <input type="password" id="Password" name="Password" placeholder="Enter password" required>
       </div>
       
       <div>
-        <label for="ConfirmPassword">Confirm Password</label>
-        <input type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder="Re-enter password" required>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
       </div>
       
       <button type="submit">Register</button>
     </form>
   </div>
+  
   <script>
-    
-    document.getElementById("signin-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const username = document.getElementById("Name").value.trim();
-    const number = document.getElementById("Number").value.trim();
-    const password = document.getElementById("Password").value;
-
-    if (username.length < 3) {
-      alert("Username must be at least 3 characters.");
-      return;
-    }
-    if (number.length < 10) {
-      alert("Phone number must be at least 10 digits.");
-      return;
-    }
-    if (password.length < 6) {
-      alert("Password must be at least 6 characters.");
-      return;
-    }
-
-    // Save to localStorage
-    localStorage.setItem("username", username);
-    localStorage.setItem("phone", number);
-
-    window.location.href = "Home4.html";
-  });
-    
+    document.getElementById("register-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById("Name").value.trim();
+      const number = document.getElementById("Number").value.trim();
+      const password = document.getElementById("Password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      
+      if (username.length < 3) {
+        alert("Username must be at least 3 characters.");
+        return;
+      }
+      
+      if (number.length < 10) {
+        alert("Phone number must be at least 10 digits.");
+        return;
+      }
+      
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters.");
+        return;
+      }
+      
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+      
+      localStorage.setItem("username", username);
+      localStorage.setItem("phone", number);
+      
+      window.location.href = "Home4.html";
+    });
   </script>
 </body>
 
