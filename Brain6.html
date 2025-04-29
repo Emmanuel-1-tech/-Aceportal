@@ -255,6 +255,56 @@
       display: block;
       margin-top: 10px;
     }
+    
+    
+    
+      .nav-button {
+    width: 90%;
+    height: 3em;
+    background: linear-gradient(135deg, #A2A5A7, #D1D3D4);
+    border-radius: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 0 1em;
+    margin-bottom: 1em;
+    transform: translateX(-30px);
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
+  }
+
+  @keyframes slideIn {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: #1a1a1a;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #000;
+  }
+
+  .nav-link svg {
+    margin-left: 0.5em;
+    fill: #1a1a1a;
+    transition: fill 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-link:hover svg {
+    fill: #000;
+    transform: scale(1.1);
+  }
   </style>
 </head>
 <body>
@@ -281,6 +331,9 @@
     </ul>
   </nav>
 
+
+  
+</div>
 
   <!-- Page Content -->
   <div class="content" id="display-area">
@@ -369,7 +422,6 @@
     <form action="cal.html"method="get" accept-charset="utf-8">
     <button>Cal GPA<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24"><path d="M6 22h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm3-3H7v-2h2v2zm0-4H7v-2h2v2zm0-4H7V9h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm4 8h-2v-6h2v6zm0-8h-2V9h2v2zM6 4h12v3H6V4z"/></svg>
 </button>
-
     </form>
    
     <p id="Review"></p>
@@ -412,30 +464,18 @@ const hamburger = document.getElementById('hamburger');
 
     settingsLink.addEventListener('click', (e) => {
       e.preventDefault();
-      displayArea.innerHTML = `<h2 style="color: white;
-      margin-right: 13.0em;margin-bottom: 3em;">About</h2>
-      
-     
-      
-      <aside style="color: ghostwhite; font-weight: 700; margin: 0em;
-margin-left: 0.9em;">
-  <details>
-    <summary style="color:#808080">
-      Write to us...
-    </summary>
-    <form>
-      <textarea name="reports" id="report" rows="10" cols="30" placeholder="Send us your feedback...."></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </details>
-</aside>
+      displayArea.innerHTML = `
 
-<p style="background:#1c1c1f; margin-top: 1em; margin-bottom: 0px;"><a style="background:#1c1c1f;color: #808080;margin-right: 7.721em;
-      margin-left: 0px; padding: 0px" href="">Join Whatsapp Channel</a></p>
       
-       <p style="background:#1c1c1f; margin-right: 11em;margin-top: 1em
-      "><a style="background:#1c1c1f;color: #FF7777;
-      margin-left: 0px;padding: 0px"href="">Report an issue</a></p>`;
+      <div class="nav-button">
+  <a href="About.html" class="nav-link">
+    About
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 24 24">
+      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+    </svg>
+    
+  </a>
+</div>`;
       sidebar.classList.remove('active');
     });
 
@@ -800,9 +840,33 @@ const randomNumber = Math.random();
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 const randomNumber = Math.random();
-      if (randomNumber >= 0 && randomNumber < 1/2) {
+      if (randomNumber >= 0 && randomNumber < 1/2000099) {
+        
     function questions() {
   typeWriterEffect("Review", "1. Which of the following is the main source of hydrocarbon?", () => {
     document.getElementById("Review").innerHTML += `
@@ -980,12 +1044,12 @@ function question7() {
           <label for="option4">Br-</label>
         </div>
       </div>
-      <button onclick="question8()">Next</button>
+      <button onclick="question7()">Next</button>
     `;
   });
 }
 
-} else {
+} else if (randomNumber >= 1/2000099 && randomNumber < 1) {
   
   function questions() {
   typeWriterEffect("Review", "1. How is the IUPAC name arranged?", () => {
@@ -1170,6 +1234,320 @@ function question7() {
   });
 }
 }
+
+
+function question8() {
+  typeWriterEffect("Review", "8. Which of the following undergoes nucleophilic substitution most readily?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="Methyl chloride">
+          <label for="option1">Methyl chloride</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Tertiary butyl chloride">
+          <label for="option2">Tertiary butyl chloride</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="Chlorobenzene">
+          <label for="option3">Chlorobenzene</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="Vinyl chloride">
+          <label for="option4">Vinyl chloride</label>
+        </div>
+      </div>
+      <button onclick="question9()">Next</button>
+    `;
+  });
+}
+
+function question9() {
+  typeWriterEffect("Review", "9. What is the correct order of reactivity in SN1 reaction?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="Tertiary > Secondary > Primary">
+          <label for="option1">Tertiary > Secondary > Primary</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Primary > Secondary > Tertiary">
+          <label for="option2">Primary > Secondary > Tertiary</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="Secondary > Tertiary > Primary">
+          <label for="option3">Secondary > Tertiary > Primary</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="Tertiary > Primary > Secondary">
+          <label for="option4">Tertiary > Primary > Secondary</label>
+        </div>
+      </div>
+      <button onclick="question10()">Next</button>
+    `;
+  });
+}
+
+function question10() {
+  typeWriterEffect("Review", "10. Which of the following compounds is aromatic?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="Cyclobutadiene">
+          <label for="option1">Cyclobutadiene</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Cyclohexane">
+          <label for="option2">Cyclohexane</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="Benzene">
+          <label for="option3">Benzene</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="Cyclooctatetraene">
+          <label for="option4">Cyclooctatetraene</label>
+        </div>
+      </div>
+      <button onclick="question11()">Next</button>
+    `;
+  });
+}
+
+function question11() {
+  typeWriterEffect("Review", "11.Which of these is not an isomer of C4H10?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="n-Butane">
+          <label for="option1">n-Butane</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Isobutane">
+          <label for="option2">Isobutane</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="Cyclobutane">
+          <label for="option3">Cyclobutane</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="2-Methylpropane">
+          <label for="option4">2-Methylpropane</label>
+        </div>
+      </div>
+      <button onclick="question12()">Next</button>
+    `;
+  });
+}
+
+function question12() {
+  typeWriterEffect("Review", "12.What is the IUPAC name of CH3CH2COOH?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="Propanoic acid">
+          <label for="option1">Propanoic acid</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Ethanoic acid">
+          <label for="option2">Ethanoic acid</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="Butanoic acid">
+          <label for="option3">Butanoic acid</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="Methanoic acid">
+          <label for="option4">Methanoic acid</label>
+        </div>
+      </div>
+      <button onclick="question13()">Next</button>
+    `;
+  });
+}
+
+function question13() {
+  typeWriterEffect("Review", "13.Which reagent is used for the oxidation of alcohols?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="KMnO4">
+          <label for="option1">KMnO4</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="NaOH">
+          <label for="option2">NaOH</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="HCl">
+          <label for="option3">HCl</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="NH3">
+          <label for="option4">NH3</label>
+        </div>
+      </div>
+      <button onclick="question14()">Next</button>
+    `;
+  });
+}
+
+function question14() {
+  typeWriterEffect("Review", "14.What is the hybridisation of carbon in ethene?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="sp">
+          <label for="option1">sp</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="sp2">
+          <label for="option2">sp2</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="sp3">
+          <label for="option3">sp3</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="dsp2">
+          <label for="option4">dsp2</label>
+        </div>
+      </div>
+      <button onclick="question15()">Next</button>
+    `;
+  });
+}
+
+function question15() {
+  typeWriterEffect("Review", "15.Which of the following is the most acidic?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="Phenol">
+          <label for="option1">Phenol</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Ethanol">
+          <label for="option2">Ethanol</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="Acetic acid">
+          <label for="option3">Acetic acid</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="Methane">
+          <label for="option4">Methane</label>
+        </div>
+      </div>
+      <button onclick="question16()">Next</button>
+    `;
+  });
+}
+
+function question16() {
+  typeWriterEffect("Review", "16.What is the product of dehydration of ethanol?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="Ethene">
+          <label for="option1">Ethene</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Methane">
+          <label for="option2">Methane</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="Acetylene">
+          <label for="option3">Acetylene</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="Ethanol">
+          <label for="option4">Ethanol</label>
+        </div>
+      </div>
+      <button onclick="question17()">Next</button>
+    `;
+  });
+}
+
+function question17() {
+  typeWriterEffect("Review", "17.Which functional group is present in aldehydes?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="-COOH">
+          <label for="option1">-COOH</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="-CHO">
+          <label for="option2">-CHO</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="-OH">
+          <label for="option3">-OH</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="-COO-">
+          <label for="option4">-COO-</label>
+        </div>
+      </div>
+      <button onclick="question18()">Next</button>
+    `;
+  });
+}
+
+function question18() {
+  typeWriterEffect("Review", "18.Which of the following undergoes electrophilic substitution?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="Alkanes">
+          <label for="option1">Alkanes</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="Alkenes">
+          <label for="option2">Alkenes</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="Alkynes">
+          <label for="option3">Alkynes</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="Aromatic compounds">
+          <label for="option4">Aromatic compounds</label>
+        </div>
+      </div>
+      <button onclick="question18()">Next</button>
+    `;
+  });
+}
+
+function question19() {
+  typeWriterEffect("Review", "19.What is the general formula for alkanes?", () => {
+    document.getElementById("Review").innerHTML += `
+      <div style="text-align: left; margin-top: 15px;">
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option1" name="option" value="CnH2n-2">
+          <label for="option1">CnH2n-2</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option2" name="option" value="CnH2n">
+          <label for="option2">CnH2n</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option3" name="option" value="CnH2n+2">
+          <label for="option3">CnH2n+2</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <input type="radio" id="option4" name="option" value="CnH2n+1">
+          <label for="option4">CnH2n+1</label>
+        </div>
+      </div>
+      <button onclick="question19()">Next</button>
+    `;
+  });
+}
+
 
 function calculateGPA() {
       const grades = {
