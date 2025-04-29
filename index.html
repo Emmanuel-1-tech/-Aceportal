@@ -2,177 +2,196 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sign In</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Support</title>
+      <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-...hash..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
-      background: #1c1c1f;
-      font-family: 'Roboto', sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .slide, .up {
+      width: 100%;
+      height: 20em;
+      background: white;
+      border-radius: 2em;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .slide {
+      margin-top: -3em;
+      animation: down 6s forwards ease-in-out;
+    }
+
+    .up {
+      margin-bottom: -3em;
+      animation: up 6s forwards ease-in-out;
+    }
+
+    .slide::before,
+    .up::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      background: inherit;
+      filter: blur(15px);
+      z-index: -1;
+      border-radius: inherit;
+    }
+
+    @keyframes down {
+      from {
+        transform: translateY(0);
+        height: 20em;
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(150px);
+        height: 0;
+        opacity: 0;
+      }
+    }
+
+    @keyframes up {
+      from {
+        transform: translateY(0);
+        height: 20em;
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(-150px);
+        height: 0;
+        opacity: 0;
+      }
+    }
+
+    h1 {
+      font-size: 2.2em;
+      color: white;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 4em;
+      animation: titleFade 4s forwards;
+    }
+
+    @keyframes titleFade {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    p.intro {
+      font-size: 1.1em;
+      text-align: center;
+      margin-top: 1em;
+      line-height: 1.6;
+      color: #ccc;
+      animation: fadeIn 5s forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .auth-buttons {
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
+      gap: 1em;
+      margin-top: 3em;
+      flex-wrap: wrap;
+    }
+
+    .auth-buttons a {
+      padding: 0.8em 2em;
+      background: white;
+      color: black;
+      border-radius: 2em;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .auth-buttons a:hover {
+      background: #444;
       color: white;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 480px) {
+      .auth-buttons a {
+        width: 80%;
+        text-align: center;
+      }
     }
     
     h1 {
+      font-size: 2em;
+      font-weight: bold;
       text-align: center;
-      margin-top: 0;
-      font-weight: 700;
-      font-size: 3em;
-      animation: slideIn 1s ease-out;
+      margin-top: 4em;
+      background: linear-gradient(to right, #ffffff, #aaaaaa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 2s ease forwards;
     }
-    
-    @keyframes slideIn {
-      from {
-        transform: translateY(50px);
+
+    @keyframes fadeInDown {
+      0% {
         opacity: 0;
+        transform: translateY(-30px);
       }
-      
-      to {
-        transform: translateY(0);
+
+      100% {
         opacity: 1;
-      }
-    }
-    
-    .form-container {
-      background: #2c2f36;
-      padding: 2.5em;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 450px;
-      text-align: center;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease-in-out;
-    }
-    
-    .form-container:hover {
-      transform: scale(1.05);
-    }
-    
-    .form-container label {
-      display: block;
-      margin-bottom: 0.5em;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-    
-    .form-container input {
-      width: 100%;
-      padding: 0.8em;
-      margin-bottom: 1.5em;
-      border: 2px solid #444;
-      border-radius: 8px;
-      background-color: #333;
-      color: white;
-      font-size: 1em;
-      transition: all 0.3s;
-    }
-    
-    .form-container input:focus {
-      border-color: #1a73e8;
-      outline: none;
-      background-color: #2a2f36;
-      box-shadow: 0 0 5px rgba(26, 115, 232, 0.8);
-    }
-    
-    .form-container button {
-      width: 100%;
-      padding: 1.1em;
-      font-size: 1.2em;
-      color: white;
-      background-color: black;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      font-weight: bold;
-      margin-top: 1.5em;
-    }
-    
-    .form-container button:hover {
-      background-color: #1669c1;
-      box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4);
-    }
-    
-    .form-container p {
-      margin-top: 0.5em;
-    }
-    
-    .form-container a {
-      color: #1a73e8;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    
-    .form-container a:hover {
-      text-decoration: underline;
-    }
-    
-    /* Responsive */
-    @media (max-width: 600px) {
-      .form-container {
-        padding: 1.5em;
-      }
-      
-      h1 {
-        font-size: 2.5em;
+        transform: translateY(0);
       }
     }
   </style>
 </head>
 
 <body>
- <div class="form-container">
-    <h1>Brain</h1>
-    <form id="signin-form">
-      <label for="Name">Username:</label>
-      <input type="text" id="Name" required autocomplete="on"/>
+  <div class="slide"><h1>Brain Acedemy</h1></div>
 
-      <label for="Number">Phone Number:</label>
-      <input type="number" id="Number" required autocomplete="on" />
-
-      <label for="Password">Password:</label>
-      <input type="password" id="Password" required autocomplete="on"/>
-      
-
-      <button type="submit">Sign in</button>
-    </form>
+  <div id="myDIV">
+    <h1>Welcome to Your Academic Companion </h1>
+    <p class="intro">Plan smarter. Track better. Succeed together.</p>
+    
+    <div class="auth-buttons">
+       <a href="#" aria-label="Login to Brain Academy"><i class="fas fa-sign-in-alt"></i>Login</a>
+ <a href="Font2.0.html" aria-label="Sign up for Brain Academy"><i class="fas fa-user-plus"></i>Sign Up</a>
+    </div>
   </div>
 
-  <script>
-document.getElementById("signin-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const username = document.getElementById("Name").value.trim();
-    const number = document.getElementById("Number").value.trim();
-    const password = document.getElementById("Password").value;
-
-    if (username.length < 3) {
-      alert("Username must be at least 3 characters.");
-      return;
-    }
-    if (number.length < 10) {
-      alert("Phone number must be at least 10 digits.");
-      return;
-    }
-    if (password.length < 6) {
-      alert("Password must be at least 6 characters.");
-      return;
-    }
-
-    // Save to localStorage
-    localStorage.setItem("username", username);
-    localStorage.setItem("phone", number);
-
-    window.location.href = "Brain6.html";
-  });
-  
-  </script>
-  
+  <div class="up"></div>
 </body>
 
 </html>
