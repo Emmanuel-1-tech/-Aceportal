@@ -1,99 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Student Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register</title>
   <style>
+    :root {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --muted-text: #aaaaaa;
+      --accent-color: #CFCFCF;
+      --error-color: #ff6b6b;
+      --card-bg: #1e1e1e;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
-      background-color: #1c1c1f;
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 1.5rem;
     }
-
-    #typewriter {
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid white;
-      animation: typing 4s steps(30, end) 1, blink .75s step-end infinite;
-      width: 0;
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5em;
+      text-align: center;
+      animation: fadeSlide 1s ease-out forwards;
     }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
+    
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-
-    @keyframes blink {
-      50% { border-color: transparent }
+    
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    a:active {
-      text-decoration: underline;
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    
+    label {
+      font-weight: bold;
+      margin-bottom: 0.2em;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.8em;
+      border-radius: 8px;
+      background-color: #2b2b2b;
+      border: 1px solid #444;
+      color: var(--text-color);
+      transition: border 0.3s ease;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
+    
+    button {
+      padding: 0.8em;
+      background-color: var(--accent-color);
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      color: var(--bg-color);
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    button:hover {
+      background-color: #FAFBFF;
     }
   </style>
 </head>
-<body class="text-white pb-16">
 
-  <!-- Header -->
-  <header class="flex items-center justify-between p-4 bg-[#1c1c1f] border-b border-gray-700">
-    <h1 class="text-xl font-bold" id="welcome-message">Hi, <span id="username-placeholder">Guest</span></h1>
-    <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full border border-white">
-  </header>
-
-  <!-- Welcome -->
-  <section class="p-4">
-    <h2 class="text-lg font-semibold">Welcome back!</h2>
-    <p class="text-sm">You have 2 assignments due. GPA: <span class="font-bold text-green-400">_-_</span></p>
-  </section>
-
-  <!-- Feature Cards -->
-  <section class="grid grid-cols-2 gap-4 p-4">
-    <div class="bg-gray-800 hover:bg-gray-700 p-4 rounded-2xl shadow text-center"><a href="cal.html">GPA Calculator</a></div>
-    <div class="bg-gray-800 hover:bg-gray-700 p-4 rounded-2xl shadow text-center"><a href="About 2.html">Settings</a></div>
-    <div class="bg-gray-800 hover:bg-gray-700 p-4 rounded-2xl shadow text-center"><a href="Brain6.html">Ask Chatbot</a></div>
-    <div class="bg-gray-800 hover:bg-gray-700 p-4 rounded-2xl shadow text-center">PDF Resources</div>
-  </section>
-
-  <!-- Typewriter Text -->
-  <section class="p-4 text-center text-sm font-mono text-gray-300">
-    <p id="typewriter">Consistency beats brilliance.</p>
-  </section>
-
-  <!-- Updates -->
-  <section class="p-4">
-    <h3 class="text-md font-semibold mb-2">Latest Updates</h3>
-    <ul class="text-sm space-y-1 text-gray-300">
-      <li>• Semester exam timetable released</li>
-      <li>• New courses added to your dashboard</li>
-    </ul>
-  </section>
-
-  <!-- Bottom Navbar -->
-  <nav class="fixed bottom-0 w-full bg-[#1c1c1f] text-white flex justify-around py-3 border-t border-gray-700 text-sm">
-    <a href="Home2.html">Home</a>
-    <a href="Brain6.html">Chat</a>
-    <a href="cal.html">GPA</a>
-    <a href="About 2.html">Settings</a>
-  </nav>
-
-  <!-- Script -->
+<body>
+  
+  <h1>Register</h1>
+  
+  <div class="card">
+    <form id="register-form">
+      <div>
+        <label for="Name">Username</label>
+        <input type="text" id="Name" name="Name" placeholder="Enter your username" required>
+      </div>
+      
+      <div>
+        <label for="Gmail">Email</label>
+        <input type="email" id="Gmail" name="Email" placeholder="example@gmail.com" required>
+      </div>
+      
+      <div>
+        <label for="Number">Phone Number</label>
+        <input type="number" id="Number" name="Number" placeholder="Enter your number" required>
+      </div>
+      
+      <div>
+        <label for="Password">Password</label>
+        <input type="password" id="Password" name="Password" placeholder="Enter password" required>
+      </div>
+      
+      <div>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+      </div>
+      
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  
   <script>
-    function editProfile() {
-      const newName = prompt("Enter new username:", localStorage.getItem("username") || "");
-      const newPhone = prompt("Enter new phone number:", localStorage.getItem("phone") || "");
-      if (newName) localStorage.setItem("username", newName);
-      if (newPhone) localStorage.setItem("phone", newPhone);
-      loadProfile();
-      location.reload(); // Optional if you want real-time refresh
-    }
-
-    function loadProfile() {
-      const username = localStorage.getItem("username") || "Guest";
-      document.getElementById("username-placeholder").textContent = username;
-    }
-
-    window.onload = loadProfile;
+    document.getElementById("register-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById("Name").value.trim();
+      const number = document.getElementById("Number").value.trim();
+      const password = document.getElementById("Password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      
+      if (username.length < 3) {
+        alert("Username must be at least 3 characters.");
+        return;
+      }
+      
+      if (number.length < 10) {
+        alert("Phone number must be at least 10 digits.");
+        return;
+      }
+      
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters.");
+        return;
+      }
+      
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+      
+      localStorage.setItem("username", username);
+      localStorage.setItem("phone", number);
+      
+      window.location.href = "Home4.html";
+    });
   </script>
 </body>
+
 </html>
