@@ -169,7 +169,7 @@
     };
 
     let courseCount = 0;
-    const defaultCourses = ["CHM 101", "PHY 101", "STA 111", "GNS 101"];
+    const defaultCourses = ["CHM 101", "PHY 101", "MTH 101", "GNS 101"];
 
     window.onload = () => {
       defaultCourses.forEach(title => addCourse(title));
@@ -246,7 +246,7 @@
         result.textContent = `Your GPA is: ${gpa.toFixed(2)}`;
       } else {
         result.className = "red";
-        result.textContent = "Oga...fill in the correct details na 😒";
+        result.textContent = "Please correct the highlighted fields.";
       }
     }
 
