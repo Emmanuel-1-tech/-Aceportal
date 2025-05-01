@@ -14,11 +14,11 @@
       --error-color: #ff6b6b;
       --card-bg: #1e1e1e;
     }
-    
+
     * {
       box-sizing: border-box;
     }
-    
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -26,26 +26,26 @@
       color: var(--text-color);
       padding: 1.5rem;
     }
-    
+
     h1 {
       font-size: 2rem;
       margin-bottom: 0.5em;
       text-align: center;
       animation: fadeSlide 1s ease-out forwards;
     }
-    
+
     @keyframes fadeSlide {
       from {
         opacity: 0;
         transform: translateY(-20px);
       }
-      
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    
+
     .card {
       background-color: var(--card-bg);
       border-radius: 12px;
@@ -56,20 +56,19 @@
       margin-left: auto;
       margin-right: auto;
     }
-    
+
     form {
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
     }
-    
+
     label {
       font-weight: bold;
       margin-bottom: 0.2em;
     }
-    
+
     input[type="text"],
-    input[type="email"],
     input[type="number"],
     input[type="password"] {
       width: 100%;
@@ -80,12 +79,12 @@
       color: var(--text-color);
       transition: border 0.3s ease;
     }
-    
+
     input:focus {
       outline: none;
       border-color: var(--accent-color);
     }
-    
+
     button {
       padding: 0.8em;
       background-color: var(--accent-color);
@@ -97,7 +96,7 @@
       transition: background 0.3s ease;
       margin-top: 1rem;
     }
-    
+
     button:hover {
       background-color: #FAFBFF;
     }
@@ -105,72 +104,67 @@
 </head>
 
 <body>
-  
+
   <h1>Register</h1>
-  
+
   <div class="card">
     <form id="register-form">
       <div>
         <label for="Name">Username</label>
         <input type="text" id="Name" name="Name" placeholder="Enter your username" required>
       </div>
-      
-      <div>
-        <label for="Gmail">Email</label>
-        <input type="email" id="Gmail" name="Email" placeholder="example@gmail.com" required>
-      </div>
-      
+
       <div>
         <label for="Number">Phone Number</label>
         <input type="number" id="Number" name="Number" placeholder="Enter your number" required>
       </div>
-      
+
       <div>
         <label for="Password">Password</label>
         <input type="password" id="Password" name="Password" placeholder="Enter password" required>
       </div>
-      
+
       <div>
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
       </div>
-      
+
       <button type="submit">Register</button>
     </form>
   </div>
-  
+
   <script>
     document.getElementById("register-form").addEventListener("submit", function(e) {
       e.preventDefault();
-      
+
       const username = document.getElementById("Name").value.trim();
       const number = document.getElementById("Number").value.trim();
       const password = document.getElementById("Password").value;
       const confirmPassword = document.getElementById("confirmPassword").value;
-      
+
       if (username.length < 3) {
         alert("Username must be at least 3 characters.");
         return;
       }
-      
+
       if (number.length < 10) {
         alert("Phone number must be at least 10 digits.");
         return;
       }
-      
+
       if (password.length < 6) {
         alert("Password must be at least 6 characters.");
         return;
       }
-      
+
       if (password !== confirmPassword) {
         alert("Passwords do not match.");
         return;
       }
-      
+
       localStorage.setItem("username", username);
       localStorage.setItem("phone", number);
-      
+
       window.location.href = "Home5.html";
     });
   </script>
